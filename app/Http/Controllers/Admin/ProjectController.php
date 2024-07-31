@@ -35,7 +35,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
 
         $data = $request->validate([
             'title'=>'required|unique:projects|max:30|min:3',
@@ -49,8 +49,8 @@ class ProjectController extends Controller
 
         $data = $request->all();
         $newProject= new Project($data);
-        $newProject->technologies()->sync(['technologies']);
         $newProject-> save();
+        $newProject->technologies()->sync(['technologies']);
         return redirect()->route('admin.projects.show', $newProject);
     }
 
