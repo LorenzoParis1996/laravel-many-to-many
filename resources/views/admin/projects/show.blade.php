@@ -7,6 +7,15 @@
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
       <h4 class="card-title">{{$project->title}}</h4>
+      <h6 class="card-title">
+        @forelse ($project->technologies as $technology)
+        <span class="badge rounded-pill text-bg-success">{{$technology->name}}</span>@if (!$loop->last) - @endif
+
+        @empty
+        <td>Not available on this device</td>
+
+        @endforelse
+      </h6>
       <h5 class="card-title">{{$project->type->name}}</h5>
       <h5 class="card-title">{{$project->developer}}</h5>
       <p class="card-text">{{$project->release_date}}</p>
