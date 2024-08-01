@@ -19,7 +19,9 @@
 
           <tr>
             <td>{{$project->title}}</td>
-            <td><span class="badge rounded-pill text-bg-primary">{{$project->type->name}}</span></td>
+            <td><span class="badge rounded-pill text-bg-primary">{{$project->type->name}}</span>
+            </td>
+
             <td>
                 @forelse ($project->technologies as $technology)
                 <span class="badge rounded-pill text-bg-success">{{$technology->name}}</span>@if (!$loop->last) - @endif

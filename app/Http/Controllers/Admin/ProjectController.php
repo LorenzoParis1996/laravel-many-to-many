@@ -87,8 +87,12 @@ class ProjectController extends Controller
             'technologies'=>'required',
             'developer'=>'required|max:30|min:4',
             'description'=>'required|min:30|max:900',
-            'release_date'=>'required|max:30'
+            'release_date'=>'required|max:30',
+            'image'=>'required|image|max:9000'
         ]);
+
+        $img_path = Storage::put('uploads/projects', $data['image']);
+        $data["image"] = $img_path;
 
         $project-> update($data);
         $project->technologies()->sync($data['technologies']);

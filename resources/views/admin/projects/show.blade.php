@@ -4,7 +4,7 @@
 <div class="container">
 
 <div class="card" style="width: 30rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src="{{asset('storage/' . $project->image)}}" class="card-img-top img-fluid" alt="{{$project->title}}">
     <div class="card-body">
       <h4 class="card-title">{{$project->title}}</h4>
       <h6 class="card-title">
