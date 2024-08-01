@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Type;
 use App\Models\Technology;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -43,10 +44,13 @@ class ProjectController extends Controller
             'technologies'=>'required|array|exists:technologies,id',
             'developer'=>'required|unique:projects|max:30|min:4',
             'description'=>'required|unique:projects|min:30|max:900',
-            'release_date'=>'required|unique:projects|max:30'
+            'release_date'=>'required|unique:projects|max:30',
+            'image'=>'required|unique:projects|image|max:9000'
         ]);
 
+        $img_path = Storage::put('uploads/projects', $data['image']);
 
+        $data["image"] = $img_path;
         $data = $request->all();
         $newProject= new Project($data);
         $newProject-> save();

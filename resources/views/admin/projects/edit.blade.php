@@ -15,7 +15,7 @@
 </div>
 
 <div class="container">
- <form action="{{route('admin.projects.update', $project)}}" method="POST">
+ <form action="{{route('admin.projects.update', $project)}}" method="POST" enctype="multipart/form-data">
     @method('PUT')
     @csrf
     <input class="form-control mb-3" type="text" placeholder="Title" aria-label="default input example" id="title" name="title" value="{{old('title', $project->title)}}">
@@ -44,7 +44,7 @@
 
     <input class="form-control mb-3" type="text" placeholder="Release Date" aria-label="default input example" id="release-date" name="release_date" value="{{old('release_date', $project->release_date)}}">
 
-    <input class="form-control mb-3" type="text" placeholder="Image" aria-label="default input example" id="image" name="image" value="{{old('image', $project->image)}}">
+    <input class="form-control mb-3" type="file" placeholder="Image" aria-label="default input example" id="image" name="image" value="{{old('image', $project->image)}}">
 
     <input type="submit" value="Update" class="btn btn-success btn-sm">
     <input type="reset" value="Reset fields" class="btn btn-danger btn-sm">
