@@ -50,7 +50,7 @@ class ProjectController extends Controller
         $data = $request->all();
         $newProject= new Project($data);
         $newProject-> save();
-        $newProject->technologies()->sync(['technologies']);
+        $newProject->technologies()->sync($data['technologies']);
         return redirect()->route('admin.projects.show', $newProject);
     }
 
