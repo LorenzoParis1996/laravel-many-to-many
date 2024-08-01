@@ -38,11 +38,11 @@ class ProjectController extends Controller
         //dd($request->all());
 
         $data = $request->validate([
-            'title'=>'required|unique:projects|max:30|min:3',
+            'title'=>'required|unique:projects|max:50|min:3',
             'type_id'=>'required|unique:projects',
             'technologies'=>'required|array|exists:technologies,id',
             'developer'=>'required|unique:projects|max:30|min:4',
-            'description'=>'required|unique:projects|min:30|max:500',
+            'description'=>'required|unique:projects|min:30|max:900',
             'release_date'=>'required|unique:projects|max:30'
         ]);
 
@@ -68,7 +68,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -77,14 +78,16 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $data = $request->validate([
-            'title'=>'required|max:30|min:3',
+            'title'=>'required|max:50|min:3',
             'type_id'=>'required',
+            'technologies'=>'required',
             'developer'=>'required|max:30|min:4',
-            'description'=>'required|min:30|max:500',
+            'description'=>'required|min:30|max:900',
             'release_date'=>'required|max:30'
         ]);
 
         $project-> update($data);
+        $project->technologies()->sync($data['technologies']);
         return redirect()->route('admin.projects.show', $project);
     }
 

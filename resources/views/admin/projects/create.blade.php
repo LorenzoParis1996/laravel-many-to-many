@@ -22,7 +22,7 @@
     <select class="form-select mb-3" aria-label="Default select example" name="type_id">
         @foreach ($types as $type)
 
-        <option value="{{$type->id}}">{{$type->name}}</option>
+        <option value="{{$type->id}">{{$type->name}}</option>
         @endforeach
 
       </select>

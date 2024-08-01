@@ -9,7 +9,7 @@
       <h4 class="card-title">{{$project->title}}</h4>
       <h6 class="card-title">
         @forelse ($project->technologies as $technology)
-        <span class="badge rounded-pill text-bg-success">{{$technology->name}}</span>@if (!$loop->last) - @endif
+        <span class="badge rounded-pill text-bg-success mt-1">{{$technology->name}}</span>@if (!$loop->last) - @endif
 
         @empty
         <td>Not available on this device</td>

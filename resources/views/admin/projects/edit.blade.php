@@ -28,6 +28,16 @@
 
       </select>
 
+
+      <div class="btn-group mb-3" role="group" aria-label="Basic checkbox toggle button group">
+        @foreach ($technologies as $technology)
+
+        <input type="checkbox" class="btn-check" id="technology-check-{{$technology->id}}" autocomplete="off" name="technologies[]" value="{{$technology->id}}">
+        <label class="btn btn-outline-primary" for="technology-check-{{$technology->id}}">{{$technology->name}}</label>
+
+        @endforeach
+      </div>
+
     <input class="form-control mb-3" type="text" placeholder="Developer" aria-label="default input example" id="developer" name="developer" value="{{old('developer', $project->developer)}}">
 
     <textarea class="form-control mb-3" type="text" placeholder="Description" aria-label="default input example" id="description" name="description">{{old('description', $project->description)}}</textarea>
