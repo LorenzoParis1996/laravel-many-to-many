@@ -8,6 +8,10 @@
         </a>
         <a href="{{route('admin.types.index')}}" class="btn btn-primary">Genres
         </a>
+        <a href="{{route('admin.technologies.create')}}" class="btn btn-primary">Add hardware
+        </a>
+        <a href="{{route('admin.technologies.index')}}" class="btn btn-primary">Hardware
+        </a>
 
 </div>
 </div>
